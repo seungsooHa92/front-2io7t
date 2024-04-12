@@ -1,105 +1,61 @@
-import emotionStyled from "@emotion/styled";
-import { useGetVans } from "../hooks/useGetVans";
+import emotionStyled from '@emotion/styled'
+import { Button } from '@mui/material'
+import { generatePath, useNavigate } from 'react-router-dom'
+import { useGetVans } from '../hooks/useGetVans'
 
 export default function Users() {
-  const {data} = useGetVans({})
+  const { data } = useGetVans()
+  const navigate = useNavigate()
 
-  const vanElements = data?.data?.vans?.map(van => (
-    <div key={van.id} className="van-tile">
-        <img alt={van.name} src={van.imageUrl} />
-        <div className="van-info">
-            <h3>{van.name}</h3>
-            <p>${van.price}<span>/day</span></p>
-        </div>
-        <i className={`van-type ${van.type} selected`}>{van.type}</i>
-    </div>
-))
-
-return (
+  return (
     <Container>
-        <div className="van-list">
-            {vanElements}
-        </div>
+      {data?.data?.vans?.map((van) => (
+        <Van key={van.id} className="van-tile">
+          <StyledImg alt={van.name} src={van.imageUrl} />
+          <div>
+            {van.name}
+            <p>
+              ${van.price}
+              <span>/day</span>
+            </p>
+          </div>
+          <Button
+            variant="contained"
+            sx={{
+              background: `${'#' + Math.floor(Math.random() * 16777215).toString(16)}`,
+            }}
+            onClick={() =>
+              navigate(
+                generatePath('/vans/:id', {
+                  id: van.id,
+                })
+              )
+            }
+          >
+            {van.type}
+          </Button>
+        </Van>
+      ))}
     </Container>
-)
+  )
 }
 
+const Van = emotionStyled.div`
+  padding:16px
+`
 const Container = emotionStyled.div`
-padding-inline: 23px
+  display:grid;
+  grid-template-columns: repeat(4, 4fr); /* 4열로 설정하고 각 열의 크기를 동등하게 분배 */
+  gap: 10
+  .van-tile a {
+    color: #161616;
+    text-decoration: none;  
+  }
 
-.van-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-  gap: 34px;
-  margin-top: 57px;
-}
+`
 
-.van-tile a {
-  color: #161616;
-  text-decoration: none;    
-}
-
-.van-tile img {
-  max-width: 100%;
-  border-radius: 5px;
-}
-
-.van-list-container button {
-  margin-right: 20px;
-  cursor: pointer;
-}
-
-.van-type {
-  height: 34px;
-  padding: 6px 26px;
-  font-style: normal;
-  font-weight: 500;
-  border: none;
-  border-radius: 5px;
-  background-color: #FFEAD0;
-  color: #4D4D4D;
-  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.van-type:hover {
-  color: #FFEAD0;
-}
-
-.van-type:focus {
-  outline: none;
-}
-
-.van-type.selected {
-  color: #FFEAD0;
-}
-
-.van-type.simple:hover, .van-type.simple.selected {
-  background-color: #E17654;
-}
-
-.van-type.rugged:hover, .van-type.rugged.selected {
-  background-color: #115E59;
-}
-
-.van-type.luxury:hover, .van-type.luxury.selected {
-  background-color: #161616;
-}
-
-.van-type.clear-filters {
-  margin-left: -20px;
-  height: 34px;
-  padding: 6px 26px;
-  font-style: normal;
-  font-weight: 500;
-  border: none;
-  border-radius: 5px;
-  text-decoration: underline;
-  background-color: transparent;
-  color: #4D4D4D;
-}
-
-i[class*='van-type-'] {
-  padding: 7px 14px;
-}
+const StyledImg = emotionStyled.img`
+  width:320px;
+  height:320px;
+  margin: 16px;
 `

@@ -1,5 +1,5 @@
-import bgImg from "../assets/images/about-hero.png";
-import { Link } from "react-router-dom";
+import bgImg from '../assets/images/about-hero.png'
+import { Link } from 'react-router-dom'
 
 export default function About() {
   return (
@@ -28,5 +28,5 @@ export default function About() {
         </Link>
       </div>
     </div>
-  );
+  )
 }

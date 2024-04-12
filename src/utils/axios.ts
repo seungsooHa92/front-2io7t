@@ -8,7 +8,7 @@ export interface ApiResponse<T> {
 export interface ApiError { error?: string | Error}
 
 export const axiosInstance = axios.create({
-  baseURL: `http://localhost:3000`
+  baseURL: import.meta.env.VITE_API_URL
 });
 
 axiosInstance.interceptors.response.use(

@@ -1,11 +1,14 @@
+import { Container } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardHeader from '@mui/material/CardHeader'
 import CardMedia from '@mui/material/CardMedia'
 import IconButton from '@mui/material/IconButton'
+import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar'
 import Typography from '@mui/material/Typography'
 import { red } from '@mui/material/colors'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import useVanStore from '../store/vans'
 import { Vans } from '../types'
@@ -24,7 +27,7 @@ function VanCard({ van }: VanProps) {
         }
         action={<IconButton aria-label="settings"></IconButton>}
         title={van.name}
-        subheader={van.price}
+        subheader={van.price + '$'}
       />
       <CardMedia
         component="img"
@@ -40,17 +43,42 @@ function VanCard({ van }: VanProps) {
     </Card>
   )
 }
+interface State extends SnackbarOrigin {
+  open: boolean
+}
 
 export default function VanDetailPage() {
   const params = useParams()
-
   const { vans } = useVanStore()
-
+  const [state] = useState<State>({
+    open: false,
+    vertical: 'top',
+    horizontal: 'center',
+  })
+  const { vertical, horizontal, open } = state
   const viewingVan = vans.filter((van) => van.id === params.id)[0] as Vans.Van
 
   if (!viewingVan) {
-    alert('oops you should come here using vans page')
-    return
+    return (window.location.href = location.origin + '/vans')
   }
-  return <VanCard van={viewingVan} />
+
+  return (
+    <Container
+      sx={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+      }}
+    >
+      <VanCard van={viewingVan} />
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        message="I love snacks"
+        key={vertical + horizontal}
+      />
+    </Container>
+  )
 }

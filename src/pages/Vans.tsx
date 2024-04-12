@@ -1,11 +1,20 @@
 import emotionStyled from '@emotion/styled'
 import { Button } from '@mui/material'
+import { useEffect } from 'react'
 import { generatePath, useNavigate } from 'react-router-dom'
 import { useGetVans } from '../hooks/useGetVans'
+import useVanStore from '../store/vans'
 
 export default function Users() {
   const { data } = useGetVans()
   const navigate = useNavigate()
+  const { setVans } = useVanStore()
+
+  useEffect(() => {
+    if (data?.data) {
+      setVans(data.data.vans)
+    }
+  }, [data])
 
   return (
     <Container>

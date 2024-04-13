@@ -1,5 +1,5 @@
 import emotionStyled from '@emotion/styled'
-import { Button } from '@mui/material'
+import { Button, Container } from '@mui/material'
 import { useEffect } from 'react'
 import { generatePath, useNavigate } from 'react-router-dom'
 import { useGetVans } from '../hooks/useGetVans'
@@ -17,7 +17,7 @@ export default function Users() {
   }, [data])
 
   return (
-    <Container>
+    <Container sx={{ display: 'flex', overflowX: 'scroll' }}>
       {data?.data?.vans?.map((van) => (
         <Van key={van.id} className="van-tile">
           <StyledImg alt={van.name} src={van.imageUrl} />
@@ -50,17 +50,6 @@ export default function Users() {
 }
 
 const Van = emotionStyled.div`
-  padding:16px
-`
-const Container = emotionStyled.div`
-  display:grid;
-  grid-template-columns: repeat(4, 4fr); /* 4열로 설정하고 각 열의 크기를 동등하게 분배 */
-  gap: 10
-  .van-tile a {
-    color: #161616;
-    text-decoration: none;  
-  }
-
 `
 
 const StyledImg = emotionStyled.img`

@@ -1,26 +1,23 @@
 import emotionStyled from '@emotion/styled'
-import { Container } from '@mui/material'
 import Typography from '@mui/material/Typography'
 
 export default function Home() {
   return (
-    <Container sx={{ width: '100%', height: '100%', marginTop: '24px' }}>
-      <ImgContainer>
-        <ImgOverlayContainer>
-          <Typography
-            variant="h2"
-            gutterBottom
-            sx={{
-              color: 'white',
-              fontSize: { xs: '2.75rem', sm: '3.75rem' },
-            }}
-          >
-            You got the travel plans,
-            <br /> we got the travel plans
-          </Typography>
-        </ImgOverlayContainer>
-      </ImgContainer>
-    </Container>
+    <ImgContainer>
+      <ImgOverlayContainer>
+        <Typography
+          variant="h2"
+          gutterBottom
+          sx={{
+            color: 'white',
+            fontSize: { xs: '2.75rem', sm: '3.75rem' },
+          }}
+        >
+          You got the travel plans,
+          <br /> we got the travel plans
+        </Typography>
+      </ImgOverlayContainer>
+    </ImgContainer>
   )
 }
 

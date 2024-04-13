@@ -14,10 +14,10 @@ export default function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/about" element={<About />}></Route>
             <Route path="/vans" element={<Vans />}></Route>
             <Route path="/vans/:id" element={<VanDetailPage />}></Route>
           </Route>
+          <Route path="/about" element={<About />}></Route>
         </Routes>
       </Suspense>
     </BrowserRouter>

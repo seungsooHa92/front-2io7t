@@ -2,41 +2,45 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body::-webkit-scrollbar {
-display: none;
+  display: none;
 }
 
 body {
--ms-overflow-style: none;
-scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 header {
-  height: 110px;
+  height: 65px;
   display: flex;
   align-items: center;
   padding-block: 10px;
+  background: #161616d4;
 }
 
 header .site-logo {
-  color: black;
+  color: white;
   margin-right: auto;
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 500;
   font-size: 25px;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
 header a {
   text-decoration: none;
-  color: #4D4D4D;
-  font-weight: 600;
+  color: white;
+  font-weight: 400;
   padding: 5px 20px;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
 header a:hover {
@@ -49,12 +53,12 @@ header a:hover {
   text-align: center;
   text-decoration: none;
   border: none;
-  padding: .75rem 1.375rem;
+  padding: 0.75rem 1.375rem;
   color: initial;
   font-weight: 700;
   border-radius: 5px;
   cursor: pointer;
-  transition: transform .1s ease-in-out;
+  transition: transform 0.1s ease-in-out;
 }
 
 .link-button:hover {
@@ -63,7 +67,9 @@ header a:hover {
 
 /*** HOME PAGE ***/
 .home-container {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/images/home-hero.png") no-repeat center center;
+  background:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)),
+    url('./assets/images/home-hero.png') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -87,22 +93,21 @@ header a:hover {
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  background-color: #FF8C38;
+  background-color: #ff8c38;
   border: none;
   width: 100%;
   margin-top: 27px;
-  padding-block: .75rem;
+  padding-block: 0.75rem;
   color: white;
   font-weight: 700;
   border-radius: 5px;
   cursor: pointer;
-  transition: transform .1s ease-in-out;
+  transition: transform 0.1s ease-in-out;
 }
 
 .home-container a:hover {
   transform: translate(1px, 1px);
 }
-
 
 /*** ABOUT PAGE ***/
 .about-hero-image {
@@ -124,7 +129,7 @@ header a:hover {
 }
 
 .about-page-cta {
-  background-color: #FFCC8D;
+  background-color: #ffcc8d;
   color: #161616;
   padding-inline: 32px;
   padding-bottom: 32px;

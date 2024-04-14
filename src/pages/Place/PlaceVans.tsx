@@ -1,12 +1,14 @@
 import { Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 import { Van } from '../../types'
 import { useGetVans } from '../../useGetVans'
 
 export default function PlaceVans() {
   const { data } = useGetVans()
   const navigate = useNavigate()
+  const increaseVisitCount = useOutletContext<() => void>()
+
   return (
     <div>
       <Typography variant="h5" sx={{ marginTop: '24px', marginBottom: '24px' }}>
@@ -16,6 +18,7 @@ export default function PlaceVans() {
         {data?.data?.vans.map((van: Van.Van) => (
           <List
             onClick={() => {
+              increaseVisitCount()
               navigate(`${van.id}`)
             }}
           >

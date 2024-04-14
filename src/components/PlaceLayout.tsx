@@ -1,8 +1,14 @@
 import { Button } from '@mui/material'
+import { useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
 export default function PlaceLayout() {
   const navigate = useNavigate()
+  const [visitCount, setVisitCount] = useState<number>(0)
+
+  const increaseVisitCount = () => {
+    setVisitCount((prev) => prev + 1)
+  }
   return (
     <>
       <div>
@@ -18,7 +24,7 @@ export default function PlaceLayout() {
           onClick={() => navigate('/place/vans')}
           sx={{ marginRight: '32px' }}
         >
-          Vans
+          Vans: visited :{visitCount}
         </Button>
         <Button
           variant="text"
@@ -31,7 +37,7 @@ export default function PlaceLayout() {
           Reviews
         </Button>
       </div>
-      <Outlet />
+      <Outlet context={increaseVisitCount as () => void} />
     </>
   )
 }

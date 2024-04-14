@@ -5,6 +5,7 @@ import PlaceLayout from './components/PlaceLayout'
 import LoadingScreen from './LoadingLayout'
 import About from './pages/About'
 import Home from './pages/Home'
+import NotFoundPage from './pages/NotFoundPage'
 import DashBoard from './pages/Place/DashBoard'
 import Income from './pages/Place/Income'
 import PlaceVanDetailPage from './pages/Place/PlaceVanDetailPage'
@@ -20,6 +21,7 @@ export default function App() {
     <BrowserRouter>
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
+          <Route path="*" element={<NotFoundPage />} />
           <Route element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="vans">

@@ -1,5 +1,6 @@
 import { Container } from '@mui/material'
 import { Outlet } from 'react-router-dom'
+import Footer from './Footer'
 import Header from './Header'
 
 export default function Layout() {
@@ -17,6 +18,7 @@ export default function Layout() {
       <Container sx={{ marginTop: '24px' }}>
         <Outlet />
       </Container>
+      <Footer />
     </Container>
   )
 }

@@ -15,6 +15,13 @@ export default function PlaceLayout() {
         </Button>
         <Button
           variant="text"
+          onClick={() => navigate('/place/vans')}
+          sx={{ marginRight: '32px' }}
+        >
+          Vans
+        </Button>
+        <Button
+          variant="text"
           onClick={() => navigate('/place/income')}
           sx={{ marginRight: '32px' }}
         >

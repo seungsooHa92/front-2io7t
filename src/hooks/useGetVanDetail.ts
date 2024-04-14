@@ -1,4 +1,4 @@
-import { UseQueryOptions, useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery, UseQueryOptions } from '@tanstack/react-query'
 import { Van } from '../types'
 import { ApiError, ApiResponse } from '../utils/axios'
 import { queryKeys } from './queryKeys'
@@ -10,7 +10,7 @@ type CustomQueryOptions = Omit<
 >
 
 export const useGetVanDetail = (id: string, options?: CustomQueryOptions) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: queryKeys.getVan(id),
     queryFn: () => getVanDetail(id),
     ...options,

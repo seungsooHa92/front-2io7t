@@ -7,9 +7,11 @@ import About from './pages/About'
 import Home from './pages/Home'
 import DashBoard from './pages/Place/DashBoard'
 import Income from './pages/Place/Income'
+import PlaceVanDetailPage from './pages/Place/PlaceVanDetailPage'
 import PlaceVans from './pages/Place/PlaceVans'
 import PlaceVansDetailPage from './pages/Place/PlaceVansDetailPage'
 import Reviews from './pages/Place/Reviews'
+import VanPrice from './pages/Place/VanPrice'
 import VanDetailPage from './pages/VanDetailPage'
 import Vans from './pages/Vans'
 
@@ -30,7 +32,10 @@ export default function App() {
               <Route path="income" element={<Income />} />
               <Route path="vans">
                 <Route index element={<PlaceVans />} />
-                <Route path=":id" element={<PlaceVansDetailPage />} />
+                <Route path=":id" element={<PlaceVansDetailPage />}>
+                  <Route index element={<PlaceVanDetailPage />} />
+                  <Route path="price" element={<VanPrice />} />
+                </Route>
               </Route>
             </Route>
           </Route>

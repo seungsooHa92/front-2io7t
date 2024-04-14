@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import { Van } from '../../types'
@@ -7,18 +8,23 @@ export default function PlaceVans() {
   const { data } = useGetVans()
   const navigate = useNavigate()
   return (
-    <>
-      {data?.data?.vans.map((van: Van.Van) => (
-        <List
-          onClick={() => {
-            navigate(`/place/vans/${van.id}`)
-          }}
-        >
-          <Img src={van.imageUrl}></Img>
-          {van.id}. name: {van.name} price: ${van.price}
-        </List>
-      ))}
-    </>
+    <div>
+      <Typography variant="h5" sx={{ marginTop: '24px', marginBottom: '24px' }}>
+        All Vans here
+      </Typography>
+      <>
+        {data?.data?.vans.map((van: Van.Van) => (
+          <List
+            onClick={() => {
+              navigate(`${van.id}`)
+            }}
+          >
+            <Img src={van.imageUrl}></Img>
+            {van.id}. name: {van.name} price: ${van.price}
+          </List>
+        ))}
+      </>
+    </div>
   )
 }
 

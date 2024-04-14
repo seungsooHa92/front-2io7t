@@ -7,8 +7,9 @@ export default function Header() {
         Intro
       </Link>
       <nav>
-        <Link to="/about"> About</Link>
-        <Link to="/vans"> Vans</Link>
+        <Link to="/place">Place</Link>
+        <Link to="/about">About</Link>
+        <Link to="/vans">Vans</Link>
       </nav>
     </header>
   )

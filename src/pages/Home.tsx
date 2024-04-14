@@ -28,6 +28,18 @@ const ImgContainer = emotionStyled.div`
   background-image: url('/home.png');
   background-size: cover;
   background-position: center; 
+  animation: slideUp 600ms ease-out forwards;
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 `
 const ImgOverlayContainer = emotionStyled.div` 
 position: absolute;

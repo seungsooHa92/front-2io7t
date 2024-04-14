@@ -17,7 +17,9 @@ export default function Users() {
   }, [data])
 
   return (
-    <Container sx={{ display: 'flex', overflowX: 'scroll' }}>
+    <Container
+      sx={{ display: 'flex', overflowX: 'scroll', paddingBottom: '24px' }}
+    >
       {data?.data?.vans?.map((van) => (
         <Van key={van.id} className="van-tile">
           <StyledImg alt={van.name} src={van.imageUrl} />

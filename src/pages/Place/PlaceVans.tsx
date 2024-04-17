@@ -1,8 +1,8 @@
 import { Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useNavigate, useOutletContext } from 'react-router-dom'
+import { useGetVans } from '../../hooks/useGetVans'
 import { Van } from '../../types'
-import { useGetVans } from '../../useGetVans'
 
 export default function PlaceVans() {
   const { data } = useGetVans()

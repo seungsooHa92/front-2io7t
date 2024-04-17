@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import PlaceLayout from './components/PlaceLayout'
 import LoadingScreen from './LoadingLayout'
 import About from './pages/About'
+import ErrorPage from './pages/ErrorPage'
 import Home from './pages/Home'
 import NotFoundPage from './pages/NotFoundPage'
 import DashBoard from './pages/Place/DashBoard'
@@ -23,6 +24,7 @@ export default function App() {
         <Routes>
           <Route path="*" element={<NotFoundPage />} />
           <Route element={<Layout />}>
+            <Route path="intended-error" element={<ErrorPage />} />
             <Route index element={<Home />} />
             <Route path="vans">
               <Route index element={<Vans />} />

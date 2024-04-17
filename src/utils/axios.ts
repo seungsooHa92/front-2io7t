@@ -29,6 +29,7 @@ export async function fetchData<T>(endpoint: string): Promise<ApiResponse<T>> {
     const response = await axiosInstance.get<T>(endpoint)
     return { data: response.data }
   } catch (error) {
+    console.log('[fetchData]  error :', error)
     return {
       data: null,
       error: error instanceof Error ? error.message : String(error),

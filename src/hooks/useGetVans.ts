@@ -1,14 +1,22 @@
-import { useQuery, UseQueryOptions } from '@tanstack/react-query'
-import { queryKeys } from './queryKeys'
-import { getVans } from './service'
+import {
+  useSuspenseQuery,
+  UseSuspenseQueryOptions,
+} from '@tanstack/react-query'
 import { Vans } from '../types'
 import { ApiError, ApiResponse } from '../utils/axios'
+import { queryKeys } from './queryKeys'
+import { getVans } from './service'
 
 type CustomQueryOptions = Omit<
-  UseQueryOptions<ApiResponse<Vans.Response>, ApiError>,
+  UseSuspenseQueryOptions<ApiResponse<Vans.Response>, ApiError>,
   'queryKey' | 'queryFn'
 >
 
 export const useGetVans = (options?: CustomQueryOptions) => {
-  return useQuery({ queryKey: queryKeys.getVans, queryFn: getVans, ...options })
+  return useSuspenseQuery({
+    queryKey: queryKeys.getVans,
+    queryFn: getVans,
+    staleTime: 0,
+    ...options,
+  })
 }
